@@ -28,7 +28,7 @@
             <h2 class="pa-well__title">
                 Withdraw Wallet.USD
             </h2>
-            <form action="" method="post">
+            <form action="{{url('')}}" method="post">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">

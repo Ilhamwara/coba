@@ -3,6 +3,10 @@
 
 @include('include.topbar')
 <style>
+.tree{
+    width:100%; 
+    margin: 0px 25%; 
+}
     .tree ul {
     padding-top: 20px; position: relative;
     
@@ -12,7 +16,8 @@
 }
 
 .tree li {
-    float: left; text-align: center;
+    float: left; 
+    text-align: center;
     list-style-type: none;
     position: relative;
     padding: 20px 5px 0 5px;
@@ -115,30 +120,24 @@
                 <div class="row">
                     <div class="tree col-md-12">
 
-
+                        @if(count($join) >0)
                         <ul style="margin:0px auto;">
                             <li>
-                                <a>{{Auth::user()->id}}</a>
+                                <a href="">{{Auth::user()->name}}</a>
 
                                 @if(count($join) >0)
                                     <ul>
                                         @foreach($join as $a => $data)
                                             <li>
-                                                <a>{{$data->member_id}}</a>
-                                                @php $subnya[$a] = \App\JoinMember::where('parent_id',$data->member_id)->get(); @endphp
-                                                @if(count($subnya[$a]) > 0)
-                                                    <ul>
-                                                        @foreach($subnya[$a] as $b => $data2)
-                                                            <li><a href="">{{$data2->member_id}}</a></li>
-                                                        @endforeach
-                                                    </ul>
-                                                @endif
+                                                <a href="">{{$data->name}}</a>
                                             </li>
                                         @endforeach
                                     </ul>
                                 @endif
                             </li>
                         </ul>
+                        @endif
+
                     </div>
                 </div>
             </div>

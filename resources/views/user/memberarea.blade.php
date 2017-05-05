@@ -41,7 +41,28 @@
                 </li>
             </ul>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
+                    <div class="pa-well text-center pa-well--status pa-well--investor">
+                        <h3 class="pa-well__title">
+                            {{Auth::user()->name}}
+                        </h3>
+                        <h2 class="career__name career__name--investor">
+                            {{title_case($user->nama)}}
+                        </h2>
+                        <h1 class="pa-well__title">
+                        Sponsor Code : <b>{{Auth::user()->id}}</b>
+                        </h1>
+                        <div class="status__inputs">
+                            <p class="pa-text pa-text--grey pa-text--status">
+                                Partner Hyperlink
+                            </p>
+                            <div class="form-group form-group--copy form-group--status">
+                                <input class="input" id="agent-url" readonly="" title="Agent link copied!" type="text" value="{{url('login/agent/'.Auth::user()->hashid)}}"></input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
                     <div class="pa-well" style="padding: 30px;">
                         <h3 class="pa-well__title text-center">
                             Time Remaining
@@ -53,11 +74,32 @@
                                     $tgl2 = date('m/d/Y', strtotime('+180 days', strtotime($tgl1)));                        
                                 @endphp
                                 <div class="text-center">
-                                    <div id="clock"></div>
+                                    <div id="clock">
+                                    </div>
                                 </div>
                             </br>
                         </br>
                     </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="pa-well pa-well--withhover">
+                            <div class="clearfix">
+                                <div class="col-xs-3 text-center">
+                                    <div class="box-icon">
+                                        <i class="fa fa-group fa-3x">
+                                        </i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-9">
+                                    <p class="pa-income__text">
+                                        Member Join Today
+                                    </p>
+                                    <div class="pa-money">
+                                        {{$join_today}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
             <div class="row">
@@ -75,7 +117,9 @@
                                     <p class="pa-income__text">
                                         Daily Benefits
                                     </p>
-                                    <div class="pa-money">0</div>
+                                    <div class="pa-money">
+                                        0
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +137,9 @@
                                     <p class="pa-income__text">
                                         Monthly Benefits
                                     </p>
-                                    <div class="pa-money js-count-to">0</div>
+                                    <div class="pa-money js-count-to">
+                                        0
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -111,7 +157,9 @@
                                     <p class="pa-income__text">
                                         Referral Benefits
                                     </p>
-                                    <div class="pa-money js-count-to">0</div>
+                                    <div class="pa-money js-count-to">
+                                        0
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +177,9 @@
                                     <p class="pa-income__text">
                                         Pairing Benefits
                                     </p>
-                                    <div class="pa-money js-count-to">0</div>
+                                    <div class="pa-money js-count-to">
+                                        0
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -168,7 +218,7 @@
 <script src="{{asset('js/jquery.countdown.js')}}">
 </script>
 <script type="text/javascript">
-    var tgl = '{{$tgl2}}';
+var tgl = '{{$tgl2}}';
 $('#clock').countdown(tgl, function(event) {
       var $this = $(this).html(event.strftime(''
         + '<ul class="clock"><li><span class="days">%D Days</span></li>'

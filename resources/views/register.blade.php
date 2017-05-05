@@ -10,6 +10,11 @@
                 <h1 class="pa-well__title pa-well__title--sign text-center" style="font-family: 'Open Sans';">
                     Registration area
                 </h1>
+                @if(!empty($user))
+                    <h6 class="pa-well__title pa-well__title--sign text-center">
+                        ajsgahsgjhags
+                    </h6>
+                @endif
                 @include('include.alert')
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
@@ -39,6 +44,8 @@
                             <input class="input input--sm input--block" name="nama" placeholder="Enter Your Name" required type="text">
                         </div>
                     </div>
+
+                    @if(empty($user))
                     <div class="col-md-8 col-md-offset-2">
                         <div class="form-group">
                             <label class="label label--block">
@@ -50,6 +57,10 @@
                             <input class="input input--sm input--block" name="kode" placeholder="Enter Code Sponsor" required type="text"/>
                         </div>
                     </div>
+                    @else
+                    <input type="hidden" name="kode"  value="{{$user->hashid}}">
+                    @endif
+
                     <div class="col-md-8 col-md-offset-2">
                         <div class="form-group">
                             <label class="label label--block">

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Hashids;
 
 class User extends Authenticatable
 {
@@ -23,6 +24,7 @@ class User extends Authenticatable
         'utility',
         'phone',
         'passport',
+        'aktif',
     ];
 
     /**
@@ -33,4 +35,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getHashidAttribute() {
+        return Hashids::connection('user_id')->encode($this->attributes['id']);
+    }
 }

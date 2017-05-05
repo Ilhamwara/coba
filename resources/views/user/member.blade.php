@@ -2,6 +2,11 @@
 
 @section('css')
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="{{asset('css/bootstrapv3.css')}}">
+<style>
+    .btn-active{padding: 10px; background: #2ecc71; color: #fff!important; text-decoration: none!important;}
+    .btn-pending{padding: 10px; background: #f1c40f; color: #fff!important; text-decoration: none!important;}
+</style>
 @endsection
 @section('content')
 @include('include.topbar')
@@ -15,28 +20,33 @@
     </ul>
 
     <div class="pa-well">
-      <h2 class="pa-well__title">Members Data</h2>
+      <h2 class="pa-well__title"><b>Members Data</b></h2>
       <div class="table-responsive">
-        <table class="pa-table" id="myTable" style="width:100%; ">
+      @include('include.alert')
+        <table class="table table-striped" id="myTable">
             <thead>
                 <tr>
-                    <td class="text-center">Name</td>
-                    <td class="text-center">Address</td>
-                    <td class="text-center">Email</td>
-                    <td class="text-center">Package</td>
-                    <td class="text-center">Pasport</td>
-                    <td class="text-center">Utility</td>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Package</th>
+                    <th class="text-center">Phone</th>
+                    <th class="text-center">Status</th>
                 </tr>
             </thead>
             <tbody>
             @foreach($member as $data)
                 <tr>
                     <td class="text-center">{{$data->name}}</td>
-                    <td class="text-center">{{$data->address}}</td>
                     <td class="text-center">{{$data->email}}</td>
                     <td class="text-center">{{$data->nama}}</td>
-                    <td class="text-center">{{$data->pasport}}</td>
-                    <td class="text-center">{{$data->utility}}</td>
+                    <td class="text-center">{{$data->phone}}</td>
+                    <td class="text-center">
+                        @if($data->aktif == 1)
+                            <a class="btn-active">Active</a>
+                        @else
+                            <a href="{{url('confirm/'.$data->hashid)}}" onclick="return confirm('Are you sure to make this member active ?');" class="btn-pending">Pending</a>
+                        @endif
+                    </td>
                 </tr>
             @endforeach
             </tbody>

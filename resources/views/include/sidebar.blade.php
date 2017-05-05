@@ -62,26 +62,21 @@
             </a>
         </li>
         @if(Auth::user()->level == 'admin')
-        {{-- <li class="pa-navigation__item">
+        <li class="pa-navigation__item">
             <a class="pa-navigation__link pa-navigation__link--settings @if(Request::is('setting')) pa-navigation__link--active @endif " href="{{url('setting')}}">
                 <span>
                     Setting
                 </span>
             </a>
-        </li> --}}
+        </li>
         @endif
     </ul>
     <div class="nav-top__soc nav-top__soc--right">
-        <a class="soc-top__link soc-top__link--right soc-top__link--fb" href="https://www.facebook.com/cryp.trade.official/">
-        </a>
-        <a class="soc-top__link soc-top__link--right soc-top__link--vk" href="https://vk.com/cryp.trade.official">
-        </a>
-        <a class="soc-top__link soc-top__link--right soc-top__link--inst" href="https://www.instagram.com/cryp.trade.official/">
-        </a>
-        <a class="soc-top__link soc-top__link--right soc-top__link--yt" href="https://www.youtube.com/channel/UCXlRQIASJXffvK6olJwi1og">
-        </a>
-        <a class="soc-top__link soc-top__link--right soc-top__link--gp" href="https://plus.google.com/communities/104195642459568500775">
-        </a>
+        <a class="soc-top__link soc-top__link--right soc-top__link--fb" href=""></a>
+        <a class="soc-top__link soc-top__link--right soc-top__link--vk" href=""></a>
+        <a class="soc-top__link soc-top__link--right soc-top__link--inst" href=""></a>
+        <a class="soc-top__link soc-top__link--right soc-top__link--yt" href=""></a>
+        <a class="soc-top__link soc-top__link--right soc-top__link--gp" href=""></a>
     </div>
     <div class="right-nav__copy">
         Crypto Market Trade
